@@ -149,7 +149,7 @@
   grid.innerHTML = products.map(p => `
     <div class="card reveal" data-id="${p.id}">
       <div class="frame">
-        <img class="item-img" src="assets/item${p.id}.png" alt="${p.name}">
+        <img class="item-img" src="assets/item${p.id}.webp" alt="${p.name}">
         <i class="ph ph-image"></i>
         <span class="swatch">В наличии</span>
         <button class="quick-add" data-add="${p.id}" aria-label="Добавить {p.name} в корзину">
@@ -307,7 +307,7 @@
     document.getElementById('qv-desc').textContent = p.desc;
     document.getElementById('qv-price').textContent = '₽' + p.price;
     document.getElementById('qv-qty-val').textContent = qvQty;
-    document.getElementById('qv-img').src = `assets/item${p.id}.png`;
+    document.getElementById('qv-img').src = `assets/item${p.id}.webp`;
     document.getElementById('qv-img').alt = p.name;
 
     const cartWasOpen = isOpen(cartWindow);
