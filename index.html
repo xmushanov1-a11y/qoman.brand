@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="ru" data-theme="light">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>QOMAN.BRAND — Вещи для походов</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400..800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<script src="https://unpkg.com/@phosphor-icons/web@2.1.1"></script>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header>        
+
+  <div class="wrap header-inner">
+    <div class="logo">QOMAN<span>.</span>BRAND</div>
+    <div class="header-actions">
+        <span class="badge-text">MADE IN SHISHAN ©</span>
+      <button class="icon-btn" id="theme-toggle" aria-label="Переключить тему">
+        <i class="ph ph-moon theme-moon"></i>
+        <i class="ph ph-sun theme-sun"></i>
+      </button>
+      <button class="icon-btn" id="cart-open" aria-label="Открыть корзину">
+        <i class="ph ph-shopping-bag"></i>
+        <span id="cart-count">0</span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<section class="hero wrap">
+  <h1 class="reveal"><br>Одежда, сумки, <br> Изделия с вышивкой</h1>
+  <p class="lede reveal">Шоурум — Орзамиева 17<br> Заказ — Instagram / WhatsApp </p>
+  <div class="tag-row">
+    <span class="tag live reveal"><span class="dot"></span>Товары в наличии</span>
+    <a class="tag reveal" href="https://wa.me/79882945887" target="_blank" rel="noopener"><i class="ph ph-whatsapp-logo"></i>WhatsApp</a>
+    <a class="tag reveal" href="https://instagram.com" target="_blank" rel="noopener"><i class="ph ph-instagram-logo"></i>Instagram</a>
+  </div>
+</section>
+
+<section class="wrap" id="shop">
+  <div class="section-head reveal">
+    <h2>Каталог</h2>
+    <span class="count">10 товаров</span>
+  </div>
+  <div class="grid" id="product-grid"></div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="footer-top">
+      <div class="footer-brand reveal">
+        <div class="logo">QOMAN<span>.</span>BRAND</div>
+        <p>Независимые изделия, выкроенные и напечатанные небольшими тиражами. Каждая вещь пронумерована, повторный выпуск не производится.</p>
+      </div>
+      <div class="footer-cols">
+        <div class="footer-col reveal">
+          <h4>Магазин</h4>
+          <a href="#shop">Сумки</a>
+          <a href="#shop">Рюкзаки</a>
+          <a href="#shop">Одежда</a>
+        </div>
+        <div class="footer-col reveal">
+          <h4>Студия</h4>
+          <a href="#">О нас</a>
+          <a href="#">Доступны для заказа</a>
+          <a href="mailto:qumanho@gmail.com">Контакты</a>
+        </div>
+        <div class="footer-col reveal">
+          <h4>Поддержка</h4>
+          <a href="#">Доставка</a>
+          <a href="#">Возврат</a>
+          <a href="#">Частые вопросы</a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2026 Qoman.Brand. Сделано в Грозном.</p>
+      <div class="footer-social">
+        <a class="icon-btn" href="https://instagram.com" target="_blank" rel="noopener" aria-label="Instagram"><i class="ph ph-instagram-logo"></i></a>
+        <a class="icon-btn" href="mailto:qumanho@gmail.com" aria-label="Электронная почта"><i class="ph ph-envelope-simple"></i></a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<div class="overlay" id="overlay"></div>
+
+<div class="modal-window" id="cart-window">
+  <div class="cart-head">
+    <h3>Ваша корзина</h3>
+    <button class="win-close" id="cart-close" aria-label="Закрыть корзину"><i class="ph ph-x"></i></button>
+  </div>
+  <div class="cart-items" id="cart-items"></div>
+  <div class="cart-foot" id="cart-foot">
+    <div class="cart-total">
+      <span>Итого</span>
+      <span class="amount" id="cart-total">0</span>
+    </div>
+    <button class="checkout-btn"><i class="ph ph-lock-simple"></i>Оформить заказ</button>
+  </div>
+</div>
+
+<div class="modal-window" id="quickview-window">
+  <div class="qv-media">
+    <img class="item-img" id="qv-img" src="" alt="">
+    <i class="ph ph-image"></i>
+    <span class="swatch" id="qv-swatch">Чёрный</span>
+  </div>
+  <div class="qv-info">
+    <div class="qv-info-top">
+      <div>
+        <h3 id="qv-name"></h3>
+        <div class="qv-sub" id="qv-sub"></div>
+      </div>
+      <button class="win-close" id="qv-close" aria-label="Закрыть"><i class="ph ph-x"></i></button>
+    </div>
+    <p class="qv-desc" id="qv-desc"></p>
+    <div class="qv-price" id="qv-price"></div>
+    <div class="qv-actions">
+      <div class="qty">
+        <button id="qv-dec" aria-label="Уменьшить количество"><i class="ph ph-minus"></i></button>
+        <span id="qv-qty-val">1</span>
+        <button id="qv-inc" aria-label="Увеличить количество"><i class="ph ph-plus"></i></button>
+      </div>
+      <button class="checkout-btn" id="qv-add"><i class="ph ph-shopping-bag-open"></i>Добавить в корзину</button>
+    </div>
+  </div>
+</div>
+
+<script>
+  const products = [
+    { id: 1, name: "Базовая классическая сумка", sub: "С вышивкой Marsho", price: 1800, desc: "С вышивкой Marsho" },
+    { id: 2, name: "Чёрная футболка с вышивкой", sub: "Размеры: S, M, L, XL, XXL", price: 2500, desc: "Размеры: S, M, L, XL, XXL" },
+    { id: 3, name: "Классическая сумка с цепью", sub: "Базовая модель с вышивкой noxciyco", price: 2100, desc: "Базовая модель с вышивкой noxciyco" },
+    { id: 4, name: "Сумка-хобо с драпированной ручкой", sub: "Эксклюзивная модель с вышивкой гор.", price: 2500, desc: "Эксклюзивная модель с вышивкой гор." },
+    { id: 5, name: "Базовая классическая сумка", sub: "С вышивкой marsho", price: 1800, desc: "С вышивкой marsho" },
+    { id: 6, name: "Чёрная сумка с цепью на молнии", sub: "Минималистичная чёрная модель с вышивкой в виде башни.", price: 2000, desc: "Минималистичная чёрная модель с вышивкой в виде башни." },
+    { id: 7, name: "Сумка-хобо с драпированной ручкой (Тёмно-бежевая)", sub: "Эксклюзивная модель с вышивкой гор.", price: 2500, desc: "Эксклюзивная модель с вышивкой гор." },
+    { id: 8, name: "Рюкзаки с индивидуальной вышивкой", sub: "Доступны в двух размерах: большой и средний. (Вышивку можно выбрать по своему желанию.)", price: 2200, desc: "Доступны в двух размерах: большой и средний. (Вышивку можно выбрать по своему желанию.)" },
+    { id: 9, name: "Костюм на осень / весну", sub: "Тонкая плащёвая ткань — лёгкая и комфортная для межсезонья.", price: 8000, desc: "Размер: отшиваем индивидуально по вашим параметрам." },
+    { id: 10, name: "Костюм на осень / весну", sub: "Тонкая плащёвая ткань — лёгкая и комфортная для межсезонья.", price: 7000, desc: "Размер: отшиваем индивидуально по вашим параметрам." },
+    { id: 11, name: "Футболка в двух расцветках", sub: "Футболка в двух расцветках.", price: 2500, desc: "Размеры S, M, L, XL, XXL" }
+  ];
+
+  const grid = document.getElementById('product-grid');
+  grid.innerHTML = products.map(p => `
+    <div class="card reveal" data-id="${p.id}">
+      <div class="frame">
+        <img class="item-img" src="assets/item${p.id}.png" alt="${p.name}">
+        <i class="ph ph-image"></i>
+        <span class="swatch">В наличии</span>
+        <button class="quick-add" data-add="${p.id}" aria-label="Добавить {p.name} в корзину">
+          <i class="ph ph-shopping-bag-open"></i>
+          <i class="ph ph-check"></i>
+        </button>
+      </div>
+      <div class="card-info">
+        <div>
+          <h3>${p.name}</h3>
+          <div class="sub">${p.sub}</div>
+        </div>
+        <div class="price">₽${p.price}</div>
+      </div>
+    </div>
+  `).join('');
+
+  /* ---------- состояние корзины (только в памяти) ---------- */
+  let cart = [];
+
+  function fmt(n){ return '₽' + n.toFixed(0); }
+
+  function renderCart(){
+    const wrap = document.getElementById('cart-items');
+    const foot = document.getElementById('cart-foot');
+    const countEl = document.getElementById('cart-count');
+    const totalCount = cart.reduce((s,i)=>s+i.qty,0);
+
+    countEl.textContent = totalCount;
+    countEl.classList.toggle('show', totalCount > 0);
+
+    if(cart.length === 0){
+      wrap.innerHTML = `
+        <div class="cart-empty">
+          <i class="ph ph-shopping-bag-open"></i>
+          <p>Ваша корзина пуста.<br>Добавьте что-нибудь из текущей коллекции.</p>
+        </div>`;
+      foot.style.display = 'none';
+      return;
+    }
+
+    foot.style.display = 'block';
+    wrap.innerHTML = cart.map(item => `
+      <div class="cart-item" data-id="${item.id}">
+        <div class="ci-thumb"><img class="item-img" src="assets/item${item.id}.png" alt="₽{item.name}"><i class="ph ph-image"></i></div>
+        <div class="ci-body">
+          <div class="ci-top">
+            <h4>${item.name}</h4>
+            <span class="ci-price">2500₽</span>
+          </div>
+          <div class="ci-sub">${item.sub}</div>
+          <div class="ci-controls">
+            <div class="qty">
+              <button data-dec="${item.id}" aria-label="Уменьшить количество"><i class="ph ph-minus"></i></button>
+              <span>${item.qty}</span>
+              <button data-inc="${item.id}" aria-label="Увеличить количество"><i class="ph ph-plus"></i></button>
+            </div>
+            <button class="ci-remove" data-remove="${item.id}"><i class="ph ph-trash"></i>Удалить</button>
+          </div>
+        </div>
+      </div>
+    `).join('');
+
+    const total = cart.reduce((s,i)=>s + i.price*i.qty, 0);
+    document.getElementById('cart-total').textContent = fmt(total);
+  }
+
+  function addToCart(id, qty, btn){
+    const p = products.find(x => x.id === id);
+    const existing = cart.find(x => x.id === id);
+    if(existing){ existing.qty += qty; }
+    else { cart.push({ ...p, qty }); }
+    renderCart();
+
+    if(btn){
+      btn.classList.add('added');
+      setTimeout(()=> btn.classList.remove('added'), 900);
+    }
+  }
+
+  grid.addEventListener('click', (e) => {
+    const addBtn = e.target.closest('[data-add]');
+    if(addBtn){
+      addToCart(Number(addBtn.dataset.add), 1, addBtn);
+      openCartAfterAdd();
+      return;
+    }
+    const card = e.target.closest('.card');
+    if(card){ openQuickview(Number(card.dataset.id)); }
+  });
+
+  document.getElementById('cart-items').addEventListener('click', (e) => {
+    const inc = e.target.closest('[data-inc]');
+    const dec = e.target.closest('[data-dec]');
+    const rem = e.target.closest('[data-remove]');
+    if(inc){
+      cart.find(x=>x.id===Number(inc.dataset.inc)).qty++;
+      renderCart();
+    } else if(dec){
+      const item = cart.find(x=>x.id===Number(dec.dataset.dec));
+      item.qty--;
+      if(item.qty <= 0) cart = cart.filter(x=>x.id!==item.id);
+      renderCart();
+    } else if(rem){
+      cart = cart.filter(x=>x.id!==Number(rem.dataset.remove));
+      renderCart();
+    }
+  });
+
+  /* ---------- общая система модальных окон ---------- */
+  const overlay = document.getElementById('overlay');
+  const cartWindow = document.getElementById('cart-window');
+  const qvWindow = document.getElementById('quickview-window');
+  const allWindows = [cartWindow, qvWindow];
+
+  function openWindow(win, delay){
+    overlay.classList.add('open');
+    document.body.style.overflow = 'hidden';
+    setTimeout(()=> win.classList.add('open'), delay || 0);
+  }
+  function closeWindow(win){
+    win.classList.remove('open');
+  }
+  function closeAll(){
+    allWindows.forEach(closeWindow);
+    overlay.classList.remove('open');
+    document.body.style.overflow = '';
+  }
+  function isOpen(win){ return win.classList.contains('open'); }
+
+  function openCart(){
+    const qvWasOpen = isOpen(qvWindow);
+    if(qvWasOpen) closeWindow(qvWindow);
+    openWindow(cartWindow, qvWasOpen ? 180 : 0);
+  }
+  function openCartAfterAdd(){
+    openCart();
+  }
+
+  document.getElementById('cart-open').addEventListener('click', openCart);
+  document.getElementById('cart-close').addEventListener('click', closeAll);
+  overlay.addEventListener('click', closeAll);
+  document.addEventListener('keydown', (e) => { if(e.key === 'Escape') closeAll(); });
+
+  /* ---------- быстрый просмотр ---------- */
+  let qvCurrentId = null;
+  let qvQty = 1;
+
+  function openQuickview(id){
+    const p = products.find(x => x.id === id);
+    qvCurrentId = id;
+    qvQty = 1;
+    document.getElementById('qv-name').textContent = p.name;
+    document.getElementById('qv-sub').textContent = p.sub;
+    document.getElementById('qv-desc').textContent = p.desc;
+    document.getElementById('qv-price').textContent = '₽' + p.price;
+    document.getElementById('qv-qty-val').textContent = qvQty;
+    document.getElementById('qv-img').src = `assets/item${p.id}.png`;
+    document.getElementById('qv-img').alt = p.name;
+
+    const cartWasOpen = isOpen(cartWindow);
+    if(cartWasOpen) closeWindow(cartWindow);
+    openWindow(qvWindow, cartWasOpen ? 180 : 0);
+  }
+
+  document.getElementById('qv-close').addEventListener('click', closeAll);
+  document.getElementById('qv-inc').addEventListener('click', () => {
+    qvQty++;
+    document.getElementById('qv-qty-val').textContent = qvQty;
+  });
+  document.getElementById('qv-dec').addEventListener('click', () => {
+    qvQty = Math.max(1, qvQty - 1);
+    document.getElementById('qv-qty-val').textContent = qvQty;
+  });
+  document.getElementById('qv-add').addEventListener('click', () => {
+    if(qvCurrentId == null) return;
+    addToCart(qvCurrentId, qvQty, null);
+    openCart();
+  });
+
+  /* ---------- переключатель темы ---------- */
+  const root = document.documentElement;
+  const themeToggle = document.getElementById('theme-toggle');
+  const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+  root.setAttribute('data-theme', prefersDark ? 'dark' : 'light');
+
+  themeToggle.addEventListener('click', () => {
+    const next = root.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+    root.setAttribute('data-theme', next);
+  });
+
+  /* ---------- появление при прокрутке ---------- */
+  const revealEls = document.querySelectorAll('.reveal');
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      if(entry.isIntersecting){
+        const el = entry.target;
+        const delay = el.closest('.grid') ? (Array.from(el.parentElement.children).indexOf(el) % 4) * 70 : 0;
+        setTimeout(()=> el.classList.add('in'), delay);
+        io.unobserve(el);
+      }
+    });
+  }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+  revealEls.forEach(el => io.observe(el));
+
+  renderCart();
+</script>
+
+</body>
+</html>
